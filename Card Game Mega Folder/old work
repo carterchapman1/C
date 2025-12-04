@@ -1,0 +1,105 @@
+//#define EXAMPLECODEINCLUDINGTYPE
+#ifdef EXAMPLECODEINCLUDINGTYPE
+
+typedef enum ESuit
+{
+    ES_HEARTS,
+    ES_DIAMONDS,
+    ES_CLUBS,
+    ES_SPADES,
+} ESuit;
+
+typedef enum EValue
+{
+
+} EValue;
+
+typedef struct TCard
+{
+    ESuit eSuit;
+    EValue eValue;
+} TCard;
+
+
+// globals with values and suits
+const char *C_Value[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
+const char *C_Suit[] = {" of Spades"," of Clubs"," of Hearts"," of Diamonds"};
+
+void example_main()
+{
+    TCard* pDeck;
+
+    pDeck = CreateDeck();
+    
+    ShuffleDeck(pDeck);
+
+    TCard tTempcard = pDeck[34];
+    printf("%s of %s", C_Value[tTempcard.eValue], C_Suit[tTempcard.eSuit]);   
+
+}
+#endif
+
+#ifdef FIRSTCARDGROUP
+char** MakeCardGroup()
+{
+    const char *C_Value[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
+    const char *C_Suit[] = {" of Spades"," of Clubs"," of Hearts"," of Diamonds"};
+
+    int num_values = sizeof(C_Value) / sizeof(C_Value[0]) ; 
+    int num_suits = sizeof(C_Suit) / sizeof(C_Suit[0]) ; 
+    int totalcards = num_values * num_suits ;
+
+    char **C_List = malloc(totalcards * sizeof(char*));
+    if (C_List == NULL) {
+        printf("Memory allocation Failed");
+        exit(1);
+    };
+    int c_index = 0 ; 
+    for (int y=0; y<num_suits; y++) {
+        for (int i=0; i<num_values; i++) {
+    
+        size_t c_len = (strlen(C_Value[i]) + strlen(C_Suit[y]) + 1);
+
+        C_List[c_index] = malloc(c_len);
+        if (C_List[c_index] == NULL) {
+            exit(1);
+            };
+
+            strcpy(C_List[c_index], C_Value[i]);
+            strcat(C_List[c_index], C_Suit[y]);
+            c_index++;
+        }
+    }
+    return C_List;
+} 
+#endif
+
+#ifdef FIRSTCARDSHUFFLE
+char** ShuffleDeck(char** deck)
+{
+    char** shuffledlist = malloc(1000);
+    srand(time(NULL));
+    int listindex = 0;
+    for (int i =0; i < 53; i++)
+    {
+        int random_index = (rand() % 53);
+        shuffledlist[i] = malloc(sizeof(deck[random_index]));
+
+        if (deck[random_index] != NULL){
+            strcpy(shuffledlist[i], deck[random_index]);
+            deck[random_index] = NULL;
+            listindex +=1;
+        } 
+        else
+        {
+            i -= 1;
+    
+        }
+        if (listindex == 52) {
+            i = 60;
+        }
+
+    }
+    return shuffledlist;
+ }
+#endif
