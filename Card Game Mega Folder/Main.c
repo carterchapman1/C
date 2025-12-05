@@ -6,34 +6,18 @@
 #include "CardPublic.h"
 #include "CurrencyPublic.h"
 
-
-
+const char *C_Value[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
+const char *C_Suit[] = {"Spades","Clubs","Hearts","Diamonds"}; 
+int num_values = sizeof(C_Value) / sizeof(C_Value[0]) ; 
+int num_suits = sizeof(C_Suit) / sizeof(C_Suit[0]) ; 
 int iGameState = 0; //0 = not being played, 1 = first cards/bets 2 = second bets 3 = third bets / cards 4 = finished
 
 TCard* CreateDeck();
-void ShuffleDeck();
+void ShuffleDeck(TCard* pDeck);
 THand DealAHand(TCard* pSDeck);
-
-
-// at the start of the program load the balance into a global or local that's passed
-bool LoadBalance(TBalance *pBalance)
-{
-    FILE* Balance;
-    Balance = fopen("UserBalance.bin", "rb");
-        fread(&pBalance, sizeof(int), 1, Balance);
-    fclose(Balance);
-
-    return true;
-};
-// when you do something meaningful just call SaveBalance
-bool SaveBalance(TBalance *pBalance)
-{
-FILE* Balance;
-    Balance = fopen("UserBalance.bin", "wb");
-        fwrite(&pBalance, sizeof(int), 1, Balance);
-        fclose(Balance);
-    return true;
-}
+bool LoadBalance(TBalance *pBalance);
+bool SaveBalance(TBalance *pBalance);
+void NonUserCards(TCard* pSDeck);
 
 //////////////////////////////////////////
 
@@ -45,8 +29,11 @@ int main()
     pDeck = CreateDeck();
     ShuffleDeck(pDeck);
     THand Hand = DealAHand(pDeck);
-    TCard tmpCard = pDeck[4];
-    printf("%d of %d", C_Value[tmpCard.eValue], C_Suit[tmpCard.eSuit]);
+    for (int i = 0; i < 52; i++)
+    {
+        TCard tmpCard = pDeck[i];
+        printf("%s of %s\n", C_Value[tmpCard.eValue], C_Suit[tmpCard.eSuit]);
+    }
     return 0;
 }
 

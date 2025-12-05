@@ -1,3 +1,5 @@
+#ifndef CARDPUBLIC_H
+    #define CARDPUBLIC_H
         typedef enum ESuit
         {
             ES_HEARTS,
@@ -34,3 +36,14 @@
             TCard TCard1;
             TCard TCard2;
         } THand;
+
+        typedef struct TCardsInPlay
+        {
+            TCard Card1;
+            TCard Card2;
+            TCard Card3;
+            TCard Card4;
+            TCard Card5;
+            THand Hand1;
+        } TCardsInPlay;
+#endif
