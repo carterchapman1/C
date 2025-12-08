@@ -103,3 +103,7 @@ char** ShuffleDeck(char** deck)
     return shuffledlist;
  }
 #endif
+
+
+//int num_values = sizeof(C_Value) / sizeof(C_Value[0]) ; 
+//int num_suits = sizeof(C_Suit) / sizeof(C_Suit[0]) ; 

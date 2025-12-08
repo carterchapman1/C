@@ -48,9 +48,4 @@
         } TCardsInPlay;
 
         TCardsInPlay AllCards;
-
-        const char *C_Value[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-        const char *C_Suit[] = {"Spades","Clubs","Hearts","Diamonds"}; 
-        int num_values = sizeof(C_Value) / sizeof(C_Value[0]) ; 
-        int num_suits = sizeof(C_Suit) / sizeof(C_Suit[0]) ; 
 #endif

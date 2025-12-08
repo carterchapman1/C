@@ -11,6 +11,7 @@
 
 EGameState iGameState = 0;
 
+void StartGame();
 void GameDisplay();
 TCard* CreateDeck();
 void ShuffleDeck(TCard* pDeck);
@@ -29,11 +30,8 @@ int main()
     pDeck = CreateDeck();
     ShuffleDeck(pDeck);
     THand Hand = DealAHand(pDeck);
-    for (int i = 0; i < 52; i++)
-    {
-        TCard tmpCard = pDeck[i];
-        printf("%s of %s\n", C_Value[tmpCard.eValue], C_Suit[tmpCard.eSuit]);
-    }
+    StartGame();
+    GameDisplay();
     return 0;
 }
 
