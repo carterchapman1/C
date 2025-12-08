@@ -2,10 +2,10 @@ CFLAGS = -Wno-implicit-function-declaration
 
 all: final.o
 
-final.o: main.o card.o
+final.o: main.o card.o game.o
 	echo "linking the three"
 	gcc $(CFLAGS) main.o card.o game.o -o final.o
-
+	
 main.o: Main.c
 	echo "Compiling the main file"
 	gcc $(CFLAGS) -c Main.c
