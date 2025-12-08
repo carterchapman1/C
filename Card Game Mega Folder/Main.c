@@ -12,7 +12,7 @@
 EGameState iGameState = 0;
 
 void StartGame();
-void GameDisplay();
+void GameDisplay(THand Hand);
 TCard* CreateDeck();
 void ShuffleDeck(TCard* pDeck);
 THand DealAHand(TCard* pSDeck);
@@ -30,8 +30,9 @@ int main()
     pDeck = CreateDeck();
     ShuffleDeck(pDeck);
     THand Hand = DealAHand(pDeck);
+    NonUserCards(pDeck);
     StartGame();
-    GameDisplay();
+    GameDisplay(Hand);
     return 0;
 }
 

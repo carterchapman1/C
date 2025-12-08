@@ -50,26 +50,6 @@ void NonUserCards(TCard* pSDeck)
     {
         int iRandomIndex = (rand() % 52);
         pRandomNumberList[i] = iRandomIndex;
-        while (i != 0)
-        {
-            if (pRandomNumberList[i] != pRandomNumberList[i-1])
-            {
-                if (pRandomNumberList[i] != pRandomNumberList[i-2])
-                {
-                    if (pRandomNumberList[i] != pRandomNumberList[i-3])
-                    {
-                        if (pRandomNumberList[i] != pRandomNumberList[i-4])
-                            {
-
-                            }
-                    }
-                }
-            }
-            else
-            {
-              i-- ;
-            }
-        }
     }
     AllCards.Card1 = pSDeck[pRandomNumberList[0]];
     AllCards.Card2 = pSDeck[pRandomNumberList[1]];
