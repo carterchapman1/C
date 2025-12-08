@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-TCardsInPlay AllCards;
-
 TCard* CreateDeck()
 {
     TCard* pDeck = malloc((sizeof(TCard)*52));

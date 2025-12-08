@@ -5,13 +5,13 @@
 #include <stdbool.h>
 #include "CardPublic.h"
 #include "CurrencyPublic.h"
+#include "GamePublic.h"
 
-const char *C_Value[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-const char *C_Suit[] = {"Spades","Clubs","Hearts","Diamonds"}; 
-int num_values = sizeof(C_Value) / sizeof(C_Value[0]) ; 
-int num_suits = sizeof(C_Suit) / sizeof(C_Suit[0]) ; 
-int iGameState = 0; //0 = not being played, 1 = first cards/bets 2 = second bets 3 = third bets / cards 4 = finished
+//////////////////////////////////////////
 
+EGameState iGameState = 0;
+
+void GameDisplay();
 TCard* CreateDeck();
 void ShuffleDeck(TCard* pDeck);
 THand DealAHand(TCard* pSDeck);
