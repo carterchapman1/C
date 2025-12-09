@@ -48,4 +48,11 @@
         } TCardsInPlay;
 
         TCardsInPlay AllCards;
+
+        typedef struct TDeck
+        {
+            TCard tCard[52];
+            int iCount;
+        } TDeck;
+
 #endif

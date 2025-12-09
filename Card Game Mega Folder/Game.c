@@ -6,6 +6,10 @@
 const char *C_Value[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
 const char *C_Suit[] = {"Spades","Clubs","Hearts","Diamonds"}; 
 
+// declare the gamestate variable
+TGameState g_tGameState;
+
+
 void GameDisplay(THand Hand)
     {
         if (iGameState > 0)

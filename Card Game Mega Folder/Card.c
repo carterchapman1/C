@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+TDeck g_tDeck;
+
 TCard* CreateDeck()
 {
     TCard* pDeck = malloc((sizeof(TCard)*52));
@@ -56,5 +58,48 @@ void NonUserCards(TCard* pSDeck)
     AllCards.Card3 = pSDeck[pRandomNumberList[2]];
     AllCards.Card4 = pSDeck[pRandomNumberList[3]];
     AllCards.Card5 = pSDeck[pRandomNumberList[4]];
+
+    free(pRandomNumberList);
 }
+
+
+////////////////////
+// get a card from the deck
+TCard GetCardFromDeck(TDeck* pSDeck)
+{
+
+    // take the top card
+    TCard tResult = pSDeck->tCard[pSDeck->iCount - 1];
+    pSDeck->iCount--;
+
+    return tResult;
+
+
+    /*
+    TDeck* pPointerToDeck = &tDeck;
+
+    TDeck tNewDeck = *pPointerToDeck;
+
+    int iNumberOfCardsInDeck1 = pPointerToDeck->iCount;
+    int iNumberOfCardsInDeck2 = tDeck.iCount;
+
+     pPointerToDeck->iCount = 32;
+     tDeck.iCount
+*/
+}
+
+
+/*
+
+notes:
+
+rework so that TDeck has up to 52 cards and a counter
+you could also have a discard deck which starts at 0 and counts up (etc)
+this also allows for multiple packs of cards to be in a deck just by adding more cards and setting (eg) tDeck.iCount to 104,156 etc
+
+then dealing is just calling GetCardFromDeck(..)
+
+also in game.c, rework so that it uses the struct g_tGameState
+
+*/
 
