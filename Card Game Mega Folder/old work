@@ -107,3 +107,34 @@ char** ShuffleDeck(char** deck)
 
 //int num_values = sizeof(C_Value) / sizeof(C_Value[0]) ; 
 //int num_suits = sizeof(C_Suit) / sizeof(C_Suit[0]) ; 
+
+/*
+THand DealAHand()
+{
+    int iRandom1 = rand() % 52; 
+    int iRandom2 = rand() % 52; 
+
+    THand Hand;
+    Hand.TCard1 = g_tDeck.tCard[iRandom1];
+    Hand.TCard2 = g_tDeck.tCard[iRandom2];
+    AllCards.Hand1 = Hand;
+    return Hand;
+}
+
+void NonUserCards(TCard* pSDeck)
+{
+    int* pRandomNumberList = malloc(sizeof(int)*5);
+    for (int i=0;i<5;i++)
+    {
+        int iRandomIndex = (rand() % 52);
+        pRandomNumberList[i] = iRandomIndex;
+    }
+    AllCards.Card1 = pSDeck[pRandomNumberList[0]];
+    AllCards.Card2 = pSDeck[pRandomNumberList[1]];
+    AllCards.Card3 = pSDeck[pRandomNumberList[2]];
+    AllCards.Card4 = pSDeck[pRandomNumberList[3]];
+    AllCards.Card5 = pSDeck[pRandomNumberList[4]];
+
+    free(pRandomNumberList);
+}
+*/

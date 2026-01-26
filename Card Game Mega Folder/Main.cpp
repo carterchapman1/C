@@ -3,22 +3,21 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-#include "CardPublic.h"
-#include "CurrencyPublic.h"
-#include "GamePublic.h"
+#include "CardPublic.cpp"
+#include "CurrencyPublic.cpp"
+#include "GamePublic.cpp"
 
 //////////////////////////////////////////
 
 EGameState iGameState = 0;
 
 void StartGame();
-void GameDisplay(THand Hand);
-TCard* CreateDeck();
-void ShuffleDeck(TCard* pDeck);
-THand DealAHand(TCard* pSDeck);
+void GameDisplay();
+void CreateDeck();
+void ShuffleDeck();
+TCard GetCardFromDeck(); 
 bool LoadBalance(TBalance *pBalance);
 bool SaveBalance(TBalance *pBalance);
-void NonUserCards(TCard* pSDeck);
 
 //////////////////////////////////////////
 
@@ -27,8 +26,8 @@ int main()
     srand(time(NULL));
     int iRandomIndex = rand() % 53 ; 
     TCard* pDeck;
-    pDeck = CreateDeck();
-    ShuffleDeck(pDeck);
+    CreateDeck();
+    ShuffleDeck();
     THand Hand = DealAHand(pDeck);
     NonUserCards(pDeck);
     StartGame();
@@ -36,3 +35,24 @@ int main()
     return 0;
 }
 
+/*
+
+from here
+call:
+    GameInit
+    GameStart
+
+    then probably somethinglike
+    while(true)
+    {
+        //could return false from GamePlay() when it's finsihed so could do
+        if (!GamePlay())
+          break;
+
+        GameDisplay();
+        
+    }
+
+    GameShutdown();
+
+*/

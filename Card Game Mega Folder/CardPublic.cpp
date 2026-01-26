@@ -39,11 +39,7 @@
 
         typedef struct TCardsInPlay
         {
-            TCard Card1;
-            TCard Card2;
-            TCard Card3;
-            TCard Card4;
-            TCard Card5;
+            TCard tCard[5];
             THand Hand1;
         } TCardsInPlay;
 

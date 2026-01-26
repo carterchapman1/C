@@ -8,15 +8,15 @@ final.o: main.o card.o game.o
 	
 main.o: Main.c
 	echo "Compiling the main file"
-	gcc $(CFLAGS) -c Main.c
+	gcc $(CFLAGS) -c Main.cpp
 
-game.o: Game.c
+game.o: Game.cpp
 	echo "Compiling the Game file"
-	gcc $(CFLAGS) -c Game.c
+	gcc $(CFLAGS) -c Game.cpp
 
-card.o: Card.c
+card.o: Card.cpp
 	echo "Compiling the card file"
-	gcc $(CFLAGS) -c Card.c
+	gcc $(CFLAGS) -c Card.cpp
 
 clean: 
 	echo "removing all but source file"
