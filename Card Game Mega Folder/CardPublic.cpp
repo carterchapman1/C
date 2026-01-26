@@ -33,8 +33,7 @@
 
         typedef struct THand
         {
-            TCard TCard1;
-            TCard TCard2;
+            TCard tCard[2];
         } THand;
 
         typedef struct TCardsInPlay
@@ -43,12 +42,12 @@
             THand Hand1;
         } TCardsInPlay;
 
-        TCardsInPlay AllCards;
-
         typedef struct TDeck
         {
             TCard tCard[52];
             int iCount;
         } TDeck;
 
+
+        extern TCardsInPlay g_tAllCards;
 #endif

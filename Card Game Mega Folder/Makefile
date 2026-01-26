@@ -6,7 +6,7 @@ final.o: main.o card.o game.o
 	echo "linking the three"
 	gcc $(CFLAGS) main.o card.o game.o -o final.o
 	
-main.o: Main.c
+main.o: Main.cpp
 	echo "Compiling the main file"
 	gcc $(CFLAGS) -c Main.cpp
 

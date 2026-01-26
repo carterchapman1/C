@@ -5,15 +5,16 @@
 TDeck g_tDeck;
 TCardsInPlay g_tCardsInPLay;
 
+
 void CreateDeck()
 {
+    g_tDeck.iCount = 0;
     for (int y = 0; y < 4; y++)
-    {
-        g_tDeck.iCount = 0;
+    {  
         for (int i = 0; i<13; i++)
         {
-            g_tDeck.tCard[g_tDeck.iCount].eSuit = y;
-            g_tDeck.tCard[g_tDeck.iCount].eValue = i;
+            g_tDeck.tCard[g_tDeck.iCount].eSuit = (ESuit)y;
+            g_tDeck.tCard[g_tDeck.iCount].eValue = (EValue)i;;
             g_tDeck.iCount++;
         }
     }

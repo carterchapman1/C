@@ -9,13 +9,9 @@
 
 //////////////////////////////////////////
 
-EGameState iGameState = 0;
-
-void StartGame();
+void GameStart();
+void GameInit();
 void GameDisplay();
-void CreateDeck();
-void ShuffleDeck();
-TCard GetCardFromDeck(); 
 bool LoadBalance(TBalance *pBalance);
 bool SaveBalance(TBalance *pBalance);
 
@@ -24,14 +20,9 @@ bool SaveBalance(TBalance *pBalance);
 int main()
 {   
     srand(time(NULL));
-    int iRandomIndex = rand() % 53 ; 
-    TCard* pDeck;
-    CreateDeck();
-    ShuffleDeck();
-    THand Hand = DealAHand(pDeck);
-    NonUserCards(pDeck);
-    StartGame();
-    GameDisplay(Hand);
+    GameInit();
+    GameStart();
+    GameDisplay();
     return 0;
 }
 
