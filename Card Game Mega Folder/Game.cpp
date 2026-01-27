@@ -1,5 +1,5 @@
-#include "GamePublic.cpp"
-#include "CardPublic.cpp"
+#include "Game.h"
+#include "Card.h"
 #include <stdio.h>
 #include <stdlib.h>
 

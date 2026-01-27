@@ -1,6 +1,6 @@
 #ifndef GAMEPUBLIC_H
     #define GAMEPUBLIC_H
-        typedef enum EGameState
+        enum EGameState
         {
             eDefault = 0,
             eAutomatic = 1,
@@ -10,13 +10,13 @@
             eSecondBets = 5,
             eFinalCard = 6,
             eFinalBets = 7
-        } EGameState;
+        };
 
-        typedef struct TGameState
+        struct TGameState
         {
             EGameState iGameState;
             int iUser;
-        } TGameState;
+        };
     
         typedef enum EGameType
         {

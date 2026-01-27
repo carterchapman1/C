@@ -1,4 +1,4 @@
-#include"CardPublic.cpp"
+#include"Card.h"
 #include <stdio.h>
 #include <stdlib.h>
 

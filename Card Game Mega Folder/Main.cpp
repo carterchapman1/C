@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-#include "CardPublic.cpp"
-#include "CurrencyPublic.cpp"
-#include "GamePublic.cpp"
+#include "Card.h"
+#include "Currency.h"
+#include "Game.h"
 
 //////////////////////////////////////////
 
