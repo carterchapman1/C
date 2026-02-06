@@ -1,6 +1,6 @@
 #ifndef CURRENCYPUBLIC_H
     #define CURRENCYPUBLIC_H
-        typedef struct TBalance
+        struct TBalance
         {
             int iChip1;
             int iChip5;
@@ -11,5 +11,5 @@
             int iChip200;
 
 
-        } TBalance;
+        };
 #endif

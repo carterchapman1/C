@@ -1,10 +1,11 @@
-#include"Card.h"
+#include"Header Files/Card.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 TDeck g_tDeck;
 TCardsInPlay g_tCardsInPLay;
-
+int g_tAmountOfCards;
+const int CardValue[] = {11,2,3,4,5,6,7,8,9,10,10,10,10};
 
 void CreateDeck()
 {
@@ -44,6 +45,46 @@ TCard GetCardFromDeck()
     g_tDeck.iCount--;
 
     return tResult;
+}
+
+/*
+int CalculateHandValue(THand *pHand)
+{
+
+    printf("%d , %d, %d \n",CardValue[pHand->tCard[0].eValue], CardValue[pCard->tCard[amount-1].eValue], amount   );
+
+   // instead of referencing _tAllCards.HandUser you can just use pHand
+   // dealervalue = CalculateHandValue(g_tAllCards.HandDeadler);
+   // uservalue = CalculateHandValue(g_tAllCards.HandUser);
+   // so try to get THand::iCount working
+
+}
+*/
+
+
+int CalculateHandValue(THand pHand)
+{
+    int iTotalValue = 0;
+    int iNumOfAces = 0;
+
+    for (int i=0;i<int(pHand.iCount); i++)
+    {
+        int iThisCardValue = CardValue[pHand.tCard[i].eValue];  // use this below where you can
+        iTotalValue += iThisCardValue;
+        if (iThisCardValue == 11)
+            {
+                iNumOfAces ++;
+            }
+        // then at the end, outside the loop check if iTotalValue 
+        // this is an 'if' because we only ever add ONE ace as 11, never more
+        if ((iTotalValue > 21) && (iNumOfAces > 0))
+        {
+            iTotalValue -= 10;  
+            iNumOfAces--;
+        }
+    }
+    return  iTotalValue;
+}
 
 
     /*
@@ -57,7 +98,7 @@ TCard GetCardFromDeck()
      pPointerToDeck->iCount = 32;
      tDeck.iCount
 */
-}
+
 
 
 /*

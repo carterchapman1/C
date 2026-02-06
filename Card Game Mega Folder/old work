@@ -137,4 +137,48 @@ void NonUserCards(TCard* pSDeck)
 
     free(pRandomNumberList);
 }
+
+
+
+
+
+
+
+
+
+if (iThisCardValue > 1)
+        {
+            if (int(CardValue[g_tAllCards.HandUser.tCard[i].eValue]) < 10)
+            {
+                TotalValue = TotalValue + CardValue[g_tAllCards.HandUser.tCard[i].eValue];
+                printf("%d 1 \n", TotalValue);
+            } else if (int(CardValue[g_tAllCards.HandUser.tCard[i].eValue]) <14)
+            {
+                TotalValue = TotalValue + 10;
+                printf("%d 1 \n", TotalValue);
+            } 
+        }
+        else if (CardValue[g_tAllCards.HandUser.tCard[i].eValue] == 1)
+            {
+                TotalValue = TotalValue + 11;
+                printf("%d 1 \n", TotalValue);
+                NumOfAces = NumOfAces + 1;
+            }
+    }    
+    if (TotalValue > 21)
+            {
+                printf("%d \n",TotalValue);
+                if (NumOfAces > 0)
+                {                
+                    for (int y;y<NumOfAces; y++)
+                    {
+                        printf("%d \n",NumOfAces);
+                        if (TotalValue > 21)
+                        {
+                            TotalValue = TotalValue - 10;
+                            NumOfAces = NumOfAces - 1;
+                        } 
+                    }
+                }
+            }
 */

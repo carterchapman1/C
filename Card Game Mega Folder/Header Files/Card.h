@@ -1,14 +1,14 @@
 #ifndef CARDPUBLIC_H
     #define CARDPUBLIC_H
-        typedef enum ESuit
+        enum ESuit
         {
             ES_HEARTS,
             ES_DIAMONDS,
             ES_CLUBS,
             ES_SPADES,
-        } ESuit;
+        };
 
-        typedef enum EValue
+        enum EValue
         {
             EV_ONE,
             EV_TWO,
@@ -23,31 +23,34 @@
             EV_JACK,
             EV_QUEEN,
             EV_KING,
-        } EValue;
+        };
 
-        typedef struct TCard
+        struct TCard
         {
             ESuit eSuit;
             EValue eValue;
-        } TCard;
+        };
 
-        typedef struct THand
+        struct THand
         {
-            TCard tCard[2];
-        } THand;
+            TCard tCard[11];
+            int iCount;
+        };
 
-        typedef struct TCardsInPlay
+        struct TCardsInPlay
         {
             TCard tCard[5];
-            THand Hand1;
-        } TCardsInPlay;
+            THand HandUser;
+            THand HandDealer;
+        };
 
-        typedef struct TDeck
+        struct TDeck
         {
             TCard tCard[52];
             int iCount;
-        } TDeck;
+        };
 
 
         extern TCardsInPlay g_tAllCards;
+        extern int g_tAmountOfCards;
 #endif

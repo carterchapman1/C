@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
-#include "Currency.h"
+#include "Header Files/Currency.h"
 
 // at the start of the program load the balance into a global or local that's passed
 bool LoadBalance(TBalance *pBalance)

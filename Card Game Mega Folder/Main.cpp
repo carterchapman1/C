@@ -3,14 +3,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-#include "Card.h"
-#include "Currency.h"
-#include "Game.h"
+#include "Header Files/Card.h"
+#include "Header Files/Currency.h"
+#include "Header Files/Game.h"
 
 //////////////////////////////////////////
 
 void GameStart();
 void GameInit();
+void GamePlay();
 void GameDisplay();
 bool LoadBalance(TBalance *pBalance);
 bool SaveBalance(TBalance *pBalance);
@@ -20,9 +21,10 @@ bool SaveBalance(TBalance *pBalance);
 int main()
 {   
     srand(time(NULL));
-    GameInit();
     GameStart();
+    GameInit();
     GameDisplay();
+    GamePlay();
     return 0;
 }
 

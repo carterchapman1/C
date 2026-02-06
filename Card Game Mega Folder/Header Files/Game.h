@@ -12,19 +12,17 @@
             eFinalBets = 7
         };
 
+        enum EGameType
+        {
+            eP = 0,
+            eBJ = 1
+        };
+
         struct TGameState
         {
             EGameState iGameState;
             int iUser;
         };
-    
-        typedef enum EGameType
-        {
-            eP = 0,
-            eBJ = 1
-        } EGameType;
-
-
 
 // extern dec of the gamestate
 extern TGameState g_tGameState;
