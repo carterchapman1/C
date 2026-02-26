@@ -18,10 +18,16 @@
             eBJ = 1
         };
 
+        struct TUser
+        {
+            int iUser;
+            int iUserID;
+        };
+
         struct TGameState
         {
             EGameState iGameState;
-            int iUser;
+            TUser User;
         };
 
 // extern dec of the gamestate

@@ -1,5 +1,6 @@
 #include "Header Files/Game.h"
 #include "Header Files/Card.h"
+#include "Header Files/Currency.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,6 +11,7 @@ const char *C_Suit[] = {"Spades","Clubs","Hearts","Diamonds"};
 TGameState g_tGameState;
 TCardsInPlay g_tAllCards;
 EGameType g_tGameType;
+TUserBalance g_tUserBalance;
 int CalculateHandValue(THand pHand);
 void ShuffleDeck();
 void CreateDeck();
@@ -53,7 +55,8 @@ void GameStart()
         scanf("%d", &UserChoiceUser);
         if (UserChoiceUser == 1)
         {
-            g_tGameState.iUser = int(1) ;
+            g_tGameState.User.iUser = int(1) ;
+            g_tUserBalance.iUser = int(1) ;
         }
 
         printf("Please Select a Game Type \n 1: Poker 2: BlackJack\n");
@@ -100,7 +103,7 @@ void GameInit()
 
         }
         }
-    
+
     // set count to 0 to start with because in C/C++ numbers/values DON'T default to 0
     g_tAllCards.HandUser.iCount = 0;    
     for (int i=0; i<2; i++)
@@ -110,7 +113,10 @@ void GameInit()
             g_tAmountOfCards++;
 
     }
+
+
 }
+
 
 
 void GamePlay()

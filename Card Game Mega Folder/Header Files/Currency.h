@@ -9,7 +9,11 @@
             int iChip50;
             int iChip100;
             int iChip200;
+        };
 
-
+        struct TUserBalance
+        {
+            TBalance TBalance;
+            int iUser;
         };
 #endif
