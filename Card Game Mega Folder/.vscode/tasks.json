@@ -1,0 +1,49 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++ build active file",
+			"command": "/usr/bin/clang++",
+			"args": [
+                "-std=c++17",
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                "-g",
+                
+                // Add this universal path first so libraries can find each other:
+                "-I/opt/homebrew/include", 
+                
+                // Keep your specific paths so VS Code finds the main directories:
+                "-I/opt/homebrew/Cellar/sdl2-compat/2.32.70/include", 
+                "-I/opt/homebrew/Cellar/sdl2_image/2.8.12/include",
+                
+                // Your source files
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/card.cpp", 
+                "${workspaceFolder}/game.cpp", 
+                "${workspaceFolder}/SDLfile.cpp",
+                
+                // Library paths
+                "-L/opt/homebrew/lib",
+                "-L/opt/homebrew/Cellar/sdl2-compat/2.32.70/lib",
+                "-L/opt/homebrew/Cellar/sdl2_image/2.8.12/lib",
+                
+                // Linker flags
+                "-lSDL2",
+                "-lSDL2_image",
+                
+                "-o",
+                "${workspaceFolder}/final"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "compiler: /usr/bin/clang++"
+        }
+    ]
+}

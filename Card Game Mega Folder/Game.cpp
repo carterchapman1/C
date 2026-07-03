@@ -1,8 +1,11 @@
 #include "Header Files/Game.h"
 #include "Header Files/Card.h"
 #include "Header Files/Currency.h"
+#include "SDL2/SDL.h"
 #include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 const char *C_Value[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
 const char *C_Suit[] = {"Spades","Clubs","Hearts","Diamonds"}; 
@@ -16,6 +19,8 @@ int CalculateHandValue(THand pHand);
 void ShuffleDeck();
 void CreateDeck();
 TCard GetCardFromDeck();
+bool LoadBalance(TUserBalance g_tUserBalance);
+bool SaveBalance(TUserBalance g_tUserBalance);
 
 
 void GameDisplay()
@@ -85,7 +90,8 @@ void GameInit()
 // basically do all the setup stuff before the game starts
     TCard* pDeck;
     g_tAmountOfCards = 0;
-    g_tAllCards.HandDealer.iCount = 0;    
+    g_tAllCards.HandDealer.iCount = 0;
+    //LoadBalance(g_tUserBalance);
     if (g_tGameType == EGameType(0))
         {
         for (int i=0; i<5; i++)
@@ -139,18 +145,20 @@ void GamePlay()
             int UserValue;
             while (bUBust == false && bUBlackJack == false && bStand == false){
                 int UserInput;
+                UserValue = CalculateHandValue(g_tAllCards.HandUser);
+                printf("Your Hand Value is : %d \n", UserValue);
+                printf("--------------------------------------------------------------------------------------------------------------------\n");
                 printf("Make a choice:\n1: Hit:\n2: Stand:\n");
                 scanf("%d", &UserInput);
-                UserValue = CalculateHandValue(g_tAllCards.HandUser);
                 if (UserInput == 1)
                 {
                     UserValue = CalculateHandValue(g_tAllCards.HandUser);
                     //printf("%d", UserValue);
                     g_tAllCards.HandUser.tCard[g_tAllCards.HandUser.iCount] = GetCardFromDeck();
                     g_tAllCards.HandUser.iCount++;
+                    printf("--------------------------------------------------------------------------------------------------------------------\n");
                     printf("Your New Card : %s of %s \n", C_Value[g_tAllCards.HandUser.tCard[g_tAllCards.HandUser.iCount-1].eValue], C_Suit[g_tAllCards.HandUser.tCard[g_tAllCards.HandUser.iCount-1].eSuit]);
                     UserValue = CalculateHandValue(g_tAllCards.HandUser);
-                    //printf("%d", UserValue);
                     if (UserValue > 21)
                     {
                         bUBust = true;
@@ -158,6 +166,10 @@ void GamePlay()
                     else if (UserValue == 21)
                     {
                         bUBlackJack = true;
+                    }
+                    else
+                    {
+                        printf("--------------------------------------------------------------------------------------------------------------------\n");
                     }
                     
                 }
@@ -178,10 +190,14 @@ void GamePlay()
             while (bDealerLimit == false && bUBust == false)
             {
                 DealerValue = CalculateHandValue(g_tAllCards.HandDealer);
+                printf("--------------------------------------------------------------------------------------------------------------------\n");
+                printf("Dealer Hand Value is : %d \n", DealerValue);
                 if (DealerValue < 17)
                 {
                 g_tAllCards.HandDealer.tCard[g_tAllCards.HandDealer.iCount] = GetCardFromDeck();
                 g_tAllCards.HandDealer.iCount++;
+                printf("--------------------------------------------------------------------------------------------------------------------\n");
+                sleep(1);
                 printf("Dealers new Card : | %s of %s | \n", C_Value[g_tAllCards.HandDealer.tCard[g_tAllCards.HandDealer.iCount-1].eValue],C_Suit[g_tAllCards.HandDealer.tCard[g_tAllCards.HandDealer.iCount-1].eSuit]);
                 DealerValue = CalculateHandValue(g_tAllCards.HandDealer);
                 //printf(" -- %d --  %d -- \n", DealerValue, g_tAllCards.HandDealer.iCount);
@@ -198,8 +214,9 @@ void GamePlay()
                 }
                 }
             }
+            sleep(1);
             printf("--------------------------------------------------------------------------------------------------------------------\n");
-            printf("%d -- %d \n", DealerValue, UserValue );
+            //printf("%d -- %d \n", DealerValue, UserValue );
             if (bDBust == true or ((UserValue > DealerValue) and DealerValue <= 21 and bUBust != true))
             {
                 printf("Player Wins\n");

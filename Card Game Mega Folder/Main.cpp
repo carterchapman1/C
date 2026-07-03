@@ -9,23 +9,37 @@
 
 //////////////////////////////////////////
 
+////////
+
+
+//////
+
 void GameStart();
 void GameInit();
 void GamePlay();
 void GameDisplay();
+void SDLStart();
 bool LoadBalance(TBalance *pBalance);
 bool SaveBalance(TBalance *pBalance);
 
 //////////////////////////////////////////
 
 int main()
-{   
+{
+//////
+
+/////
+
     srand(time(NULL));
+    SDLStart();
     GameStart();
     GameInit();
     GameDisplay();
     GamePlay();
+
     return 0;
+
+/////
 }
 
 /*
